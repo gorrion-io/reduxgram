@@ -1,26 +1,36 @@
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+const FixDefaultImportPlugin = require("webpack-fix-default-import-plugin");
+
 module.exports = {
-  entry: [
-    './src/index.js'
-  ],
-  output: {
-    path: __dirname,
-    publicPath: '/',
-    filename: 'bundle.js'
-  },
-  module: {
-    loaders: [{
-      exclude: /node_modules/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['react', 'es2015']
-      }
-    }]
-  },
-  resolve: {
-    extensions: ['.js', '.jsx']
-  },
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
-  }
+    entry: ["./src/index.tsx"],
+    output: {
+        path: __dirname + "/build",
+        publicPath: "/",
+        filename: "bundle.js",
+    },
+    resolve: {
+        extensions: [".ts", ".tsx", ".js", ".jsx"],
+        modules: [path.resolve(__dirname, "src/"), "node_modules"],
+    },
+    devtool: "cheap-module-eval-source-map",
+    module: {
+        loaders: [
+            {
+                exclude: /node_modules/,
+                test: /\.tsx?$/,
+                loader: "awesome-typescript-loader",
+            },
+        ],
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./src/index.html",
+            cache: true,
+        }),
+        new FixDefaultImportPlugin(),
+    ],
+    devServer: {
+        historyApiFallback: true,
+    },
 };

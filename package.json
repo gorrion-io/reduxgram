@@ -1,26 +1,41 @@
 {
-  "name": "reactgram",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-core": "6.24.0",
-    "babel-loader": "6.4.1",
-    "babel-preset-es2015": "6.24.0",
-    "babel-preset-react": "6.23.0",
-    "webpack": "2.3.2"
-  },
-  "dependencies": {
-    "axios": "0.15.3",
-    "react": "15.4.2",
-    "react-dom": "15.4.2",
-    "react-redux": "5.0.3",
-    "redux": "3.6.0",
-    "redux-thunk": "2.2.0"
-  }
+    "name": "reduxgram",
+    "version": "1.0.0",
+    "description": "",
+    "main": "./build/bundle.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "npm run dev-server",
+        "build": "webpack",
+        "dev-server": "webpack-dev-server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/19majkel94/reduxgram.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/19majkel94/reduxgram/issues"
+    },
+    "homepage": "https://github.com/19majkel94/reduxgram#readme",
+    "dependencies": {
+        "@types/react": "^16.0.5",
+        "@types/react-dom": "^15.5.4",
+        "@types/react-redux": "^5.0.8",
+        "@types/redux-devtools-extension": "^2.13.2",
+        "awesome-typescript-loader": "^3.0.0-beta.9",
+        "html-webpack-plugin": "^2.30.1",
+        "react": "^16.0.0-rc.3",
+        "react-dom": "^16.0.0-rc.3",
+        "react-redux": "^5.0.6",
+        "redux": "^3.7.2",
+        "redux-devtools-extension": "^2.13.2",
+        "redux-thunk": "^2.2.0",
+        "tslib": "^1.7.1",
+        "typescript": "^2.5.2",
+        "webpack": "^2.6.1",
+        "webpack-dev-server": "^2.8.2",
+        "webpack-fix-default-import-plugin": "^1.0.3"
+    }
 }
