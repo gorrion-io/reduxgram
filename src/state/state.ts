@@ -12,4 +12,5 @@ export interface RootState {
 export type PhotosState = {
     profileName: string;
     photos: ReadonlyArray<Photo>;
+    isFetching: boolean;
 }

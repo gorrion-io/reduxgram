@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import * as history from "react-router-redux";
+import AutoBind from "autobind-decorator";
 
 import { fetchPhotos } from "@src/actions/creators";
 import { Dispatch } from "@src/types/redux";
@@ -10,9 +11,10 @@ interface Props {
     fetchPhotos(profileName: string): Promise<void>;
     redirectToProfile(name: string): history.RouterAction;
 }
+@AutoBind
 class SearchBar extends Component<Props> {
 
-    private readonly initialProfileName = "pkosiec";
+    private readonly initialProfileName = "gorrion.pl";
     private inputField: HTMLInputElement;
 
     private async onSearchSubmit() {
@@ -34,7 +36,7 @@ class SearchBar extends Component<Props> {
                     <button
                         className="btn btn-primary"
                         type="button"
-                        onClick={this.onSearchSubmit.bind(this)}
+                        onClick={this.onSearchSubmit}
                     >
                         Search
                     </button>

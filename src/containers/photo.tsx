@@ -28,9 +28,9 @@ class Photo extends Component<Props> {
             return <span>Loading photo...</span>;
         } else {
             return (
-                <div className="col-md-8 text-center">
+                <div className="text-center" style={{ width: "100%" }}>
                     <a target="_blank" href={photo.link}>
-                        <img src={photo.images.standard} />
+                        <img src={photo.images.standard} style={{ maxWidth: "100%" }}/>
                     </a>
                     {photo.comments.length !== 0 ? (
                         <div>

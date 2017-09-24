@@ -9,12 +9,13 @@ export type RootAction =
     | LocationChangeAction
     | OtherActions
     // | SelectPhotoAction
-    | FetchPhotosAction
+    | PhotosFetchedAction
+    | PhotosFetchStatedAction
 ;
 
 export interface BasicAction extends ReduxAction {
     readonly type: string;
-    readonly payload: any;
+    readonly payload?: any;
     readonly error?: boolean;
 }
 
@@ -27,10 +28,14 @@ export interface OtherActions {
 //     readonly payload: Readonly<Photo>;
 // }
 
-export interface FetchPhotosAction extends BasicAction {
-    readonly type: ActionType.FETCH_PHOTOS;
+export interface PhotosFetchedAction extends BasicAction {
+    readonly type: ActionType.PHOTOS_FETCHED;
     readonly payload: {
         profileName: string;
         photos: ReadonlyArray<Photo>;
     }
+}
+
+export interface PhotosFetchStatedAction extends BasicAction {
+    readonly type: ActionType.PHOTOS_FETCH_STARTED;
 }

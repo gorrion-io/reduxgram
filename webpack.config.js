@@ -3,7 +3,10 @@ const path = require("path");
 const FixDefaultImportPlugin = require("webpack-fix-default-import-plugin");
 
 module.exports = {
-    entry: ["./src/index.tsx"],
+    entry: [
+        "./src/index.tsx",
+        "./src/index.html",
+    ],
     output: {
         path: __dirname + "/build",
         publicPath: "/",
@@ -25,6 +28,10 @@ module.exports = {
                 test: /\.tsx?$/,
                 loader: "awesome-typescript-loader",
             },
+            {
+                test: /\.html$/,
+                loader: "raw-loader"
+             }
         ],
     },
     plugins: [
@@ -46,6 +53,7 @@ module.exports = {
             warnings: false,
             errors: true
         },
+        host: "0.0.0.0",
         port: 9000,
         stats: true,
         watchContentBase: false,
