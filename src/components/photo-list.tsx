@@ -1,5 +1,5 @@
 import React, { StatelessComponent } from "react";
-import { Photo } from "interfaces/data";
+import { Photo } from "@src/interfaces/data";
 
 interface Props {
     photos: Photo[];

@@ -1,5 +1,5 @@
-import { ThunkAction } from "types/redux";
-import { RootAction } from "actions/interfaces";
+import { ThunkAction } from "@src/types/redux";
+import { RootAction } from "@src/actions/interfaces";
 
 // type ActionCreator<T extends DispatchFunction | ActionFuncion> = T;
 type ActionFuncion = (...args: any[]) => RootAction;

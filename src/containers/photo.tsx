@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
-import { RootState } from "state/state";
-import { Photo } from "components/photo";
+import { RootState } from "@src/state/state";
+import { Photo } from "@src/components/photo";
 
 function mapStateToProps(state: RootState) {
     return { photo: state.selectedPhoto };

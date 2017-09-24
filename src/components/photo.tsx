@@ -1,6 +1,6 @@
 import React, { StatelessComponent } from "react";
-import { CommentsList } from "components/comments-list";
-import { Photo as PhotoData } from "interfaces/data";
+import { CommentsList } from "@src/components/comments-list";
+import { Photo as PhotoData } from "@src/interfaces/data";
 
 export const Photo: StatelessComponent<{ photo: PhotoData }> = ({ photo }) => {
     if (!photo) {

@@ -1,7 +1,7 @@
 import { Action as ReduxAction } from "redux";
 
-import { Photo } from "interfaces/data";
-import { ActionType } from "actions/types";
+import { Photo } from "@src/interfaces/data";
+import { ActionType } from "@src/actions/types";
 
 export type RootAction =
     | OtherActions

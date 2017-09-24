@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 
-import { SelectedPhotoReducer } from "reducers/selected-photo-reducer";
-import { PhotosReducer } from "reducers/photos-reducer";
-import { RootState } from "state/state";
+import { SelectedPhotoReducer } from "@src/reducers/selected-photo-reducer";
+import { PhotosReducer } from "@src/reducers/photos-reducer";
+import { RootState } from "@src/state/state";
 
 export const rootReducer = combineReducers<RootState>({
     selectedPhoto: SelectedPhotoReducer,

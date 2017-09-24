@@ -12,6 +12,9 @@ module.exports = {
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"],
         modules: [path.resolve(__dirname, "src/"), "node_modules"],
+        alias: {
+            "@src": path.resolve(__dirname, "src/"),
+        }
     },
     devtool: "cheap-module-eval-source-map",
     module: {

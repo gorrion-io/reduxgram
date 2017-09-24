@@ -1,7 +1,7 @@
-import { Photo, Comment } from "interfaces/data";
-import { ActionType } from "actions/types";
-import { RootObject } from "interfaces/endpoint";
-import { createActionCreator } from "actions/helpers";
+import { Photo, Comment } from "@src/interfaces/data";
+import { ActionType } from "@src/actions/types";
+import { RootObject } from "@src/interfaces/endpoint";
+import { createActionCreator } from "@src/actions/helpers";
 
 export const selectPhoto = createActionCreator((photo: Photo) => ({
     type: ActionType.SELECT_PHOTO,

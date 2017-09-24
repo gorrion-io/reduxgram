@@ -1,4 +1,4 @@
-import { Photo } from "interfaces/data";
+import { Photo } from "@src/interfaces/data";
 
 export interface RootState {
     readonly selectedPhoto: SelectedPhotoState;

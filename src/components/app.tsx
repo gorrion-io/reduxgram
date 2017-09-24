@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
-import { PhotoListContainer } from "containers/photo-list";
-import { PhotoContainer } from "containers/photo";
-import { SearchBarContainer } from "containers/search-bar";
+import { PhotoListContainer } from "@src/containers/photo-list";
+import { PhotoContainer } from "@src/containers/photo";
+import { SearchBarContainer } from "@src/containers/search-bar";
 
 export class App extends Component {
     render() {

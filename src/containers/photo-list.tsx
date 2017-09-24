@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import { selectPhoto } from "actions/creators";
-import { RootState } from "state/state";
-import { Dispatch } from "types/redux";
-import { PhotoList } from "components/photo-list";
+import { selectPhoto } from "@src/actions/creators";
+import { RootState } from "@src/state/state";
+import { Dispatch } from "@src/types/redux";
+import { PhotoList } from "@src/components/photo-list";
 
 function mapStateToProps(state: RootState) {
     return { photos: state.photos };

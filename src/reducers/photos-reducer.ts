@@ -1,6 +1,6 @@
-import { PhotosState } from "state/state";
-import { Reducer } from "types/redux";
-import { ActionType } from "actions/types";
+import { PhotosState } from "@src/state/state";
+import { Reducer } from "@src/types/redux";
+import { ActionType } from "@src/actions/types";
 
 export const PhotosReducer: Reducer<PhotosState> = (state = [], action) => {
     switch (action.type) {
