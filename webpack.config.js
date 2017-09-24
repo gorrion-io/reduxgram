@@ -16,7 +16,8 @@ module.exports = {
             "@src": path.resolve(__dirname, "src/"),
         }
     },
-    devtool: "cheap-module-eval-source-map",
+    // devtool: "cheap-module-eval-source-map",
+    devtool: "cheap-module-source-map",
     module: {
         loaders: [
             {
@@ -34,6 +35,19 @@ module.exports = {
         new FixDefaultImportPlugin(),
     ],
     devServer: {
-        historyApiFallback: true,
+        compress: true,
+        disableHostCheck: true,
+        historyApiFallback: {
+            disableDotRule: true,
+        },
+        hot: true,
+        https: false,
+        overlay: {
+            warnings: false,
+            errors: true
+        },
+        port: 9000,
+        stats: true,
+        watchContentBase: false,
     },
 };

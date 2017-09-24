@@ -3,17 +3,17 @@ import { ActionType } from "@src/actions/types";
 import { RootObject } from "@src/interfaces/endpoint";
 import { createActionCreator } from "@src/actions/helpers";
 
-export const selectPhoto = createActionCreator((photo: Photo) => ({
-    type: ActionType.SELECT_PHOTO,
-    payload: photo,
-}));
+// export const selectPhoto = createActionCreator((photo: Photo) => ({
+//     type: ActionType.SELECT_PHOTO,
+//     payload: photo,
+// }));
 
 export const fetchPhotos = createActionCreator((profileName: string) => async dispatch => {
     try {
         const response = await fetch(`https://igpi.ga/${profileName}/media`);
         const data = await response.json() as RootObject;
         const photos = data.items.map<Photo>(item => ({
-            id: item.id,
+            id: item.code,
             link: item.link,
             comments: item.comments.data.map<Comment>(comment => ({
                 id: comment.id,
@@ -28,7 +28,10 @@ export const fetchPhotos = createActionCreator((profileName: string) => async di
 
         dispatch({
             type: ActionType.FETCH_PHOTOS,
-            payload: photos,
+            payload: {
+                profileName,
+                photos,
+            }
         });
     }
     catch (error) {

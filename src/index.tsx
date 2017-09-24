@@ -1,17 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-
+import { ConnectedRouter } from "react-router-redux";
 
 import { App } from "@src/components/app";
 import { store } from "@src/state/store";
-import { fetchPhotos } from "@src/actions/creators";
+import { history } from "@src/state/store";
 
-store.dispatch(fetchPhotos("gorrion.pl")).then(() => {
-    ReactDOM.render(
-        <Provider store={store}>
+ReactDOM.render(
+    <Provider store={store}>
+        <ConnectedRouter history={history}>
             <App />
-        </Provider>,
-        document.getElementById("container"),
-    );
-});
+        </ConnectedRouter>
+    </Provider>,
+    document.getElementById("container"),
+);
