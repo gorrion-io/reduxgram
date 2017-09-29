@@ -2,11 +2,8 @@ import { Action as ReduxAction } from "redux";
 
 import { Photo } from "@src/interfaces/data";
 import { ActionType } from "@src/actions/types";
-import { RouterAction, LocationChangeAction } from "react-router-redux";
 
 export type RootAction =
-    | RouterAction
-    | LocationChangeAction
     | OtherActions
     // | SelectPhotoAction
     | PhotosFetchedAction

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import * as history from "react-router-redux";
+import * as history from "connected-react-router";
 import AutoBind from "autobind-decorator";
 
 import { fetchPhotos } from "@src/actions/creators";
@@ -8,15 +8,15 @@ import { Dispatch } from "@src/types/redux";
 
 
 interface Props {
-    fetchPhotos(profileName: string): Promise<void>;
-    redirectToProfile(name: string): history.RouterAction;
+    fetchPhotos(profileName: string): Promise<never>;
+    redirectToProfile(name: string): never;
 }
-@AutoBind
 class SearchBar extends Component<Props> {
 
     private readonly initialProfileName = "gorrion.pl";
     private inputField: HTMLInputElement;
 
+    @AutoBind
     private async onSearchSubmit() {
         const profileName = this.inputField.value;
         await this.props.fetchPhotos(profileName);
