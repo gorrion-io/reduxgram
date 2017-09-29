@@ -2,12 +2,13 @@
     "name": "reduxgram",
     "version": "1.0.0",
     "description": "",
+    "private": true,
     "main": "./build/bundle.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "npm run dev-server",
         "build": "webpack",
-        "dev-server": "webpack-dev-server"
+        "dev-server": "tsc -p webpack.tsconfig.json && webpack-dev-server"
     },
     "repository": {
         "type": "git",
@@ -30,13 +31,9 @@
         "@types/react-router-dom": "^4.0.7",
         "@types/redux-devtools-extension": "^2.13.2",
         "@types/redux-logger": "^3.0.3",
-        "@types/webpack-env": "^1.13.1",
         "autobind-decorator": "^2.1.0",
-        "awesome-typescript-loader": "^3.0.0-beta.9",
         "connected-react-router": "^4.2.3",
         "history": "^4.7.2",
-        "html-webpack-plugin": "^2.30.1",
-        "raw-loader": "^0.5.1",
         "react": "^16.0.0",
         "react-dom": "^16.0.0",
         "react-hot-loader": "^3.0.0-beta.7",
@@ -48,7 +45,16 @@
         "redux-logger": "^3.0.6",
         "redux-thunk": "^2.2.0",
         "tslib": "^1.7.1",
-        "typescript": "^2.5.2",
+        "typescript": "^2.5.2"
+    },
+    "devDependencies": {
+        "@types/html-webpack-plugin": "^2.28.0",
+        "@types/webpack-dev-server": "^2.4.1",
+        "@types/webpack-env": "^1.13.1",
+        "awesome-typescript-loader": "^3.2.3",
+        "html-webpack-plugin": "^2.30.1",
+        "raw-loader": "^0.5.1",
+        "ts-node": "^3.3.0",
         "webpack": "^2.6.1",
         "webpack-dev-server": "^2.8.2",
         "webpack-fix-default-import-plugin": "^1.0.3"

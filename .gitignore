@@ -3,3 +3,6 @@
 
 # build
 /build 
+
+# transpile webpack config
+/webpack.config.js

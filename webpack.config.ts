@@ -1,9 +1,9 @@
-const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+import * as path from "path";
+import * as webpack from "webpack";
+import * as HtmlWebpackPlugin from "html-webpack-plugin";
 const FixDefaultImportPlugin = require("webpack-fix-default-import-plugin");
 
-module.exports = {
+const configuration: webpack.Configuration = {
     entry: [
         "react-hot-loader/patch",
         "./src/index.tsx",
@@ -16,7 +16,7 @@ module.exports = {
     },
     resolve: {
         extensions: [".ts", ".tsx", ".js", ".jsx"],
-        modules: [path.resolve(__dirname, "src/"), "node_modules"],
+        modules: [path.resolve(__dirname, "node_modules")],
         alias: {
             "@src": path.resolve(__dirname, "src/"),
         }
@@ -24,9 +24,12 @@ module.exports = {
     // devtool: "cheap-module-eval-source-map",
     devtool: "cheap-module-source-map",
     module: {
-        loaders: [
+        rules: [
             {
-                exclude: /node_modules/,
+                exclude: [
+                    /node_modules/,
+                    /webpack.config/,
+                ],
                 test: /\.tsx?$/,
                 loaders: [
                     "react-hot-loader/webpack",
@@ -65,3 +68,5 @@ module.exports = {
         watchContentBase: false,
     },
 };
+
+export default configuration;
