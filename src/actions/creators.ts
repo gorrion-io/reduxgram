@@ -1,6 +1,6 @@
 import { Photo, Comment } from "@src/interfaces/data";
 import { ActionType } from "@src/actions/types";
-import { RootObject } from "@src/interfaces/endpoint";
+import { RootObject as EndpointReponse } from "@src/interfaces/endpoint";
 import { createActionCreator } from "@src/actions/helpers";
 
 // export const selectPhoto = createActionCreator((photo: Photo) => ({
@@ -17,6 +17,7 @@ export const fetchPhotos = createActionCreator((profileName: string) => async (d
     dispatch({
         type: ActionType.PHOTOS_FETCH_STARTED,
     });
+
     let response: Response;
     try {
         response = await fetch(`https://igpi.ga/${profileName}/media`);
@@ -25,7 +26,7 @@ export const fetchPhotos = createActionCreator((profileName: string) => async (d
         console.error("Data fetching failed!", error);
         return;
     } 
-    const data = await response.json() as RootObject;
+    const data = await response.json() as EndpointReponse;
     const photos = data.items.map<Photo>(item => ({
         id: item.code,
         link: item.link,
