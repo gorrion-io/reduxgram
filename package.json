@@ -8,7 +8,7 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "npm run dev-server",
         "build": "webpack",
-        "dev-server": "tsc -p webpack.tsconfig.json && webpack-dev-server"
+        "dev-server": "tsc -p webpack.tsconfig.json && webpack-dev-server --progress"
     },
     "repository": {
         "type": "git",

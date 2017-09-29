@@ -8,7 +8,6 @@ import { logger } from "redux-logger";
 import { rootReducer } from "@src/reducers";
 
 export const history = createHistory();
-
 export const store = createStore(
     connectRouter(history)(rootReducer), // new root reducer with router state
     composeWithDevTools(
@@ -19,3 +18,7 @@ export const store = createStore(
         ),
     ),
 );
+    
+if (module.hot) {
+    module.hot.accept("@src/reducers", () => store.replaceReducer(connectRouter(history)(rootReducer)));
+}

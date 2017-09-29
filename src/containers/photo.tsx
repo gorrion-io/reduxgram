@@ -33,7 +33,7 @@ class Photo extends Component<Props> {
                         <img src={photo.images.standard} style={{ maxWidth: "100%" }}/>
                     </a>
                     {photo.comments.length === 0 ? (
-                        <h3>No comments is available here.</h3>
+                        <h3>No comments available.</h3>
                     ) : (
                         <div>
                             <h4>Comments:</h4>

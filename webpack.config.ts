@@ -48,6 +48,7 @@ const configuration: webpack.Configuration = {
             cache: true,
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.NamedModulesPlugin(),
         new FixDefaultImportPlugin(),
     ],
     devServer: {

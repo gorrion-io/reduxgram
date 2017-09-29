@@ -35,4 +35,5 @@ export interface PhotosFetchedAction extends BasicAction {
 
 export interface PhotosFetchStatedAction extends BasicAction {
     readonly type: ActionType.PHOTOS_FETCH_STARTED;
+    readonly payload?: never;
 }

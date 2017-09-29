@@ -8,7 +8,7 @@ const initialPhotosState: PhotosState = {
     isFetching: false,
 }
 
-export const PhotosReducer: Reducer<PhotosState> = (state = initialPhotosState, action) => {
+export const photosReducer: Reducer<PhotosState> = (state = initialPhotosState, action) => {
     switch (action.type) {
         case ActionType.PHOTOS_FETCHED:
             return {
