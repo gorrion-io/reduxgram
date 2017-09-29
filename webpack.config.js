@@ -1,9 +1,11 @@
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
+const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const FixDefaultImportPlugin = require("webpack-fix-default-import-plugin");
 
 module.exports = {
     entry: [
+        "react-hot-loader/patch",
         "./src/index.tsx",
         "./src/index.html",
     ],
@@ -26,7 +28,10 @@ module.exports = {
             {
                 exclude: /node_modules/,
                 test: /\.tsx?$/,
-                loader: "awesome-typescript-loader",
+                loaders: [
+                    "react-hot-loader/webpack",
+                    "awesome-typescript-loader",
+                ],
             },
             {
                 test: /\.html$/,
@@ -39,6 +44,7 @@ module.exports = {
             template: "./src/index.html",
             cache: true,
         }),
+        new webpack.HotModuleReplacementPlugin(),
         new FixDefaultImportPlugin(),
     ],
     devServer: {

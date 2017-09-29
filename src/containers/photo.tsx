@@ -32,13 +32,13 @@ class Photo extends Component<Props> {
                     <a target="_blank" href={photo.link}>
                         <img src={photo.images.standard} style={{ maxWidth: "100%" }}/>
                     </a>
-                    {photo.comments.length !== 0 ? (
+                    {photo.comments.length === 0 ? (
+                        <h3>No comments is available here.</h3>
+                    ) : (
                         <div>
                             <h4>Comments:</h4>
                             <CommentsList comments={photo.comments} />
                         </div>
-                    ) : (
-                        <h4>No comments available.</h4>
                     )}
                 </div>
             );
