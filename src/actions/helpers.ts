@@ -6,4 +6,4 @@ type ActionFuncion = (...args: any[]) => RootAction;
 type DispatchFunction = (...args: any[]) => ThunkAction<void|Promise<void>>;
 
 export function createActionCreator<F extends DispatchFunction | ActionFuncion>(actionCreator: F): F;
-export function createActionCreator(param: any) { return param };
+export function createActionCreator(param: any) { return param; }

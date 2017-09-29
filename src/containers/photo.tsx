@@ -20,10 +20,10 @@ class Photo extends Component<Props> {
             this.loadData();
         }
     }
-    
+
     render() {
         const { photo } = this.props;
-        
+
         if (!photo) {
             return <span>Loading photo...</span>;
         } else {
@@ -43,7 +43,7 @@ class Photo extends Component<Props> {
                 </div>
             );
         }
-    };
+    }
 
     private loadData() {
         this.props.fetchPhotos(this.props.match.params.profileName);

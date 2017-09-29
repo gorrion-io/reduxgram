@@ -8,7 +8,7 @@
 //             return action.payload;
 //         case ActionType.FETCH_PHOTOS:
 //             return action.payload[0];
-            
+//
 //         default:
 //             return state;
 //     }

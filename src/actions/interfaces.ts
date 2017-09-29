@@ -30,7 +30,7 @@ export interface PhotosFetchedAction extends BasicAction {
     readonly payload: {
         profileName: string;
         photos: ReadonlyArray<Photo>;
-    }
+    };
 }
 
 export interface PhotosFetchStatedAction extends BasicAction {

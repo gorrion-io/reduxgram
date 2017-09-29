@@ -8,18 +8,18 @@ import { SearchBarContainer } from "@src/containers/search-bar";
 
 export class App extends Component {
 
-    readonly widthThreshold = 960;
+    private readonly widthThreshold = 960;
 
     render() {
         return (
             <div>
                 <Media maxWidth={this.widthThreshold}>
-                    <Switch >
+                    <Switch>
                         <Route path="/:profileName/:photoId" component={PhotoContainer} />
                         <Route path="/:profileName" component={PhotoListContainer} />
                     </Switch>
                 </Media>
-                <Media minWidth={this.widthThreshold+1}>
+                <Media minWidth={this.widthThreshold + 1}>
                     <div style={{ display: "flex" }}>
                         <div style={{ width: "35vw", position: "relative" }}>
                             <Route path="/:profileName" component={PhotoListContainer} />

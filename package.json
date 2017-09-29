@@ -8,7 +8,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "npm run dev-server",
         "build": "webpack",
-        "dev-server": "tsc -p webpack.tsconfig.json && webpack-dev-server --progress"
+        "dev-server": "tsc -p webpack.tsconfig.json && webpack-dev-server --progress",
+        "lint": "tslint --project tsconfig.json --config tslint.json"
     },
     "repository": {
         "type": "git",
@@ -55,6 +56,8 @@
         "html-webpack-plugin": "^2.30.1",
         "raw-loader": "^0.5.1",
         "ts-node": "^3.3.0",
+        "tslint": "^5.7.0",
+        "tslint-react": "^3.2.0",
         "webpack": "^2.6.1",
         "webpack-dev-server": "^2.8.2",
         "webpack-fix-default-import-plugin": "^1.0.3"

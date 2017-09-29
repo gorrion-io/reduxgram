@@ -9,7 +9,7 @@ export interface RootState {
 }
 
 // export type SelectedPhotoState = Readonly<Photo>|null;
-export type PhotosState = {
+export interface PhotosState {
     profileName: string;
     photos: ReadonlyArray<Photo>;
     isFetching: boolean;

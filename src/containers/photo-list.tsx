@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { match, withRouter } from "react-router";
+import { match as matchType, withRouter } from "react-router";
 import { Link } from "react-router-dom";
 
 import { RootState } from "@src/state/state";
@@ -9,9 +9,8 @@ import { Dispatch } from "@src/types/redux";
 import { bindActionCreators } from "redux";
 import { fetchPhotos } from "@src/actions/creators";
 
-
 interface Props {
-    match: match<{profileName: string}>;
+    match: matchType<{profileName: string}>;
     photos: Photo[];
     profileName: string;
     fetchPhotos: typeof fetchPhotos;
@@ -27,7 +26,7 @@ class PhotoList extends Component<Props> {
     render() {
         const { photos, match } = this.props;
         const photosElements = photos.map(photo => (
-            <Link 
+            <Link
                 to={`${match.url}/${photo.id}`}
                 key={photo.id}
             >
@@ -49,14 +48,14 @@ class PhotoList extends Component<Props> {
                 </div>
             );
         }
-    };
+    }
 
     private loadData() {
         this.props.fetchPhotos(this.props.match.params.profileName);
     }
 }
 function mapStateToProps(state: RootState) {
-    return { 
+    return {
         photos: state.photos.photos,
         profileName: state.photos.profileName,
     };

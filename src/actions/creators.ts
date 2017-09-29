@@ -21,11 +21,10 @@ export const fetchPhotos = createActionCreator((profileName: string) => async (d
     let response: Response;
     try {
         response = await fetch(`https://igpi.ga/${profileName}/media`);
-    }
-    catch (error) {
+    } catch (error) {
         console.error("Data fetching failed!", error);
         return;
-    } 
+    }
     const data = await response.json() as EndpointReponse;
     const photos = data.items.map<Photo>(item => ({
         id: item.code,
@@ -46,6 +45,6 @@ export const fetchPhotos = createActionCreator((profileName: string) => async (d
         payload: {
             profileName,
             photos,
-        }
+        },
     });
 });

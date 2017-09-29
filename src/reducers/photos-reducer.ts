@@ -6,7 +6,7 @@ const initialPhotosState: PhotosState = {
     profileName: "",
     photos: [],
     isFetching: false,
-}
+};
 
 export const photosReducer: Reducer<PhotosState> = (state = initialPhotosState, action) => {
     switch (action.type) {
@@ -15,12 +15,12 @@ export const photosReducer: Reducer<PhotosState> = (state = initialPhotosState, 
                 profileName: action.payload.profileName,
                 photos: action.payload.photos,
                 isFetching: false,
-            }
+            };
         case ActionType.PHOTOS_FETCH_STARTED:
             return {
                 ...state,
                 isFetching: true,
-            }
+            };
 
         default:
             return state;

@@ -6,7 +6,6 @@ import AutoBind from "autobind-decorator";
 import { fetchPhotos } from "@src/actions/creators";
 import { Dispatch } from "@src/types/redux";
 
-
 interface Props {
     fetchPhotos(profileName: string): Promise<never>;
     redirectToProfile(name: string): never;
@@ -15,13 +14,6 @@ class SearchBar extends Component<Props> {
 
     private readonly initialProfileName = "gorrion.pl";
     private inputField: HTMLInputElement;
-
-    @AutoBind
-    private async onSearchSubmit() {
-        const profileName = this.inputField.value;
-        await this.props.fetchPhotos(profileName);
-        this.props.redirectToProfile(profileName);
-    }
 
     render() {
         return (
@@ -44,9 +36,16 @@ class SearchBar extends Component<Props> {
             </div>
         );
     }
+
+    @AutoBind
+    private async onSearchSubmit() {
+        const profileName = this.inputField.value;
+        await this.props.fetchPhotos(profileName);
+        this.props.redirectToProfile(profileName);
+    }
 }
 function mapDispatchToProps(dispatch: Dispatch) {
-    return { 
+    return {
         fetchPhotos: (profileName: string) => dispatch(fetchPhotos(profileName)),
         redirectToProfile: (profileName: string) => dispatch(history.push(`/${profileName}`)),
     };

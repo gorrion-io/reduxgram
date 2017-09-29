@@ -1,7 +1,6 @@
 import { RootAction } from "@src/actions/interfaces";
 import { RootState } from "@src/state/state";
 
-
 export type Reducer<State> = (state: State|undefined, action: Readonly<RootAction>) => State;
 
 export interface Dispatch {
