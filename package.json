@@ -7,7 +7,7 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "npm run dev-server",
-        "build": "webpack",
+        "build": "tsc -p webpack.tsconfig.json && webpack --progress",
         "dev-server": "tsc -p webpack.tsconfig.json && webpack-dev-server --progress",
         "lint": "tslint --project tsconfig.json --config tslint.json"
     },
