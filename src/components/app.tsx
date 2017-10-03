@@ -1,34 +1,54 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
-import Media from "react-responsive";
+import styled from "styled-components";
 
 import { PhotoListContainer } from "@src/containers/photo-list";
 import { PhotoContainer } from "@src/containers/photo";
 import { SearchBarContainer } from "@src/containers/search-bar";
+import { MobileView, DesktopView } from "@src/components/media-queries";
 
 export class App extends Component {
 
-    private readonly widthThreshold = 960;
+    readonly leftToRightColumnRatio = 2 / 5;
+
+    ColumnContainer = styled.div`
+        display: flex;
+        flex-direction: row;
+    `;
+
+    Column = styled.div`
+        position: relative;
+    `;
+
+    LeftColumn = styled(this.Column)`
+        width: ${this.leftToRightColumnRatio * 100}vw;
+    `;
+
+    RightColumn = styled(this.Column)`
+        width: ${(1 - this.leftToRightColumnRatio) * 100}vw;
+    `;
 
     render() {
+        const { ColumnContainer, LeftColumn, RightColumn } = this;
+
         return (
             <div>
-                <Media maxWidth={this.widthThreshold}>
+                <MobileView>
                     <Switch>
                         <Route path="/:profileName/:photoId" component={PhotoContainer} />
                         <Route path="/:profileName" component={PhotoListContainer} />
                     </Switch>
-                </Media>
-                <Media minWidth={this.widthThreshold + 1}>
-                    <div style={{ display: "flex" }}>
-                        <div style={{ width: "35vw", position: "relative" }}>
+                </MobileView>
+                <DesktopView>
+                    <ColumnContainer>
+                        <LeftColumn>
                             <Route path="/:profileName" component={PhotoListContainer} />
-                        </div>
-                        <div style={{ width: "65vw", position: "relative" }}>
+                        </LeftColumn>
+                        <RightColumn>
                             <Route path="/:profileName/:photoId" component={PhotoContainer} />
-                        </div>
-                    </div>
-                </Media>
+                        </RightColumn>
+                    </ColumnContainer>
+                </DesktopView>
                 <Route exact path="/" component={SearchBarContainer} />
             </div>
         );
