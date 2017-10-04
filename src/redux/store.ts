@@ -4,8 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { connectRouter, routerMiddleware } from "connected-react-router";
 import { createBrowserHistory } from "history";
 import { logger } from "redux-logger";
-
-import { rootReducer } from "@src/reducers";
+import { rootReducer } from "@src/redux/root-reducer";
 
 // new root reducer with router state
 const createRootReducerWithRouterState = () => connectRouter(history)(rootReducer);
@@ -23,5 +22,5 @@ export const store = createStore(
 );
 
 if (module.hot) {
-    module.hot.accept("@src/reducers", () => store.replaceReducer(createRootReducerWithRouterState()));
+    module.hot.accept("@src/redux/root-reducer", () => store.replaceReducer(createRootReducerWithRouterState()));
 }

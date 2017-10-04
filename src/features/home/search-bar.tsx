@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import AutoBind from "autobind-decorator";
 
-import { fetchPhotos, redirectToProfilePage } from "@src/actions/creators";
+import { redirectToProfilePage } from "@src/redux/actions";
+import { fetchPhotos } from "@src/features/photos/action-creators";
 
 interface Props {
     fetchPhotos: typeof fetchPhotos;

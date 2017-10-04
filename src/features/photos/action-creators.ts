@@ -1,14 +1,8 @@
-import * as history from "connected-react-router";
-
-import { Photo, Comment } from "@src/interfaces/data";
-import { ActionType } from "@src/actions/types";
-import { RootObject as EndpointReponse } from "@src/interfaces/endpoint";
-import { createActionCreator } from "@src/actions/helpers";
-
-// export const selectPhoto = createActionCreator((photo: Photo) => ({
-//     type: ActionType.SELECT_PHOTO,
-//     payload: photo,
-// }));
+import { RootObject as EndpointReponse } from "@src/common/endpoint.interface";
+import { createActionCreator } from "@src/redux/helpers";
+import { ActionType } from "@src/redux/types";
+import { PhotoData } from "@src/features/photos/photo-data.interface";
+import { CommentData } from "@src/features/comments/comment-data.interface";
 
 export const fetchPhotos = createActionCreator((profileName: string) => async (dispatch, getState) => {
     const state = getState();
@@ -28,10 +22,10 @@ export const fetchPhotos = createActionCreator((profileName: string) => async (d
         return;
     }
     const data = await response.json() as EndpointReponse;
-    const photos = data.items.map<Photo>(item => ({
+    const photos = data.items.map<PhotoData>(item => ({
         id: item.code,
         link: item.link,
-        comments: item.comments.data.map<Comment>(comment => ({
+        comments: item.comments.data.map<CommentData>(comment => ({
             id: comment.id,
             username: comment.from.username,
             text: comment.text,
@@ -50,5 +44,3 @@ export const fetchPhotos = createActionCreator((profileName: string) => async (d
         },
     });
 });
-
-export const redirectToProfilePage = createActionCreator((profileName: string) => history.push(`/${profileName}`));

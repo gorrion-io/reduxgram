@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import { PhotoListContainer } from "@src/containers/photo-list";
-import { PhotoContainer } from "@src/containers/photo";
-import { SearchBarContainer } from "@src/containers/search-bar";
-import { MobileView, DesktopView } from "@src/components/helpers/media-queries";
-import { ColumnContainer, LeftColumn, RightColumn } from "@src/components/helpers/layout";
+import { MobileView, DesktopView } from "@src/common/helpers/components/media-queries";
+import { PhotoListContainer } from "@src/features/photos/PhotoList.container";
+import { PhotoContainer } from "@src/features/photos/Photo.container";
+import { ColumnContainer, LeftColumn, RightColumn } from "@src/common/helpers/components/layout";
+import { SearchBarContainer } from "@src/features/home/search-bar";
 
 export class App extends Component {
 

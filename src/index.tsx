@@ -3,10 +3,8 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { ConnectedRouter } from "connected-react-router";
 import { AppContainer } from "react-hot-loader";
-
-import { App } from "@src/components/app";
-import { store } from "@src/state/store";
-import { history } from "@src/state/store";
+import { store, history } from "@src/redux/store";
+import { App } from "@src/app/app.container";
 
 function render(Component: ComponentType) {
     ReactDOM.render(
@@ -24,5 +22,5 @@ function render(Component: ComponentType) {
 render(App);
 
 if (module.hot) {
-    module.hot.accept("@src/components/app", () => render(App));
+    module.hot.accept("@src/app/app.container", () => render(App));
 }

@@ -2,14 +2,13 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { match as matchType, withRouter } from "react-router";
 import { Link } from "react-router-dom";
-
-import { RootState } from "@src/state/state";
-import { Photo } from "@src/interfaces/data";
-import { fetchPhotos } from "@src/actions/creators";
+import { PhotoData } from "@src/features/photos/photo-data.interface";
+import { fetchPhotos } from "@src/features/photos/action-creators";
+import { RootState } from "@src/redux/state";
 
 interface Props {
     match: matchType<{profileName: string}>;
-    photos: Photo[];
+    photos: PhotoData[];
     profileName: string;
     fetchPhotos: typeof fetchPhotos;
 }

@@ -1,8 +1,8 @@
 import React, { StatelessComponent } from "react";
 
-import { Comment } from "@src/interfaces/data";
+import { CommentData } from "@src/features/comments/comment-data.interface";
 
-export const CommentsListItem: StatelessComponent<{ comment: Comment }> = ({ comment }) => (
+export const CommentsListItem: StatelessComponent<{ comment: CommentData }> = ({ comment }) => (
     <li className="list-group-item">
         <strong>{comment.username}</strong>
         &nbsp;

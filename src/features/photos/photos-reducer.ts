@@ -1,6 +1,6 @@
-import { PhotosState } from "@src/state/state";
-import { Reducer } from "@src/types/redux";
-import { ActionType } from "@src/actions/types";
+import { Reducer } from "@src/common/types/redux";
+import { ActionType } from "@src/redux/types";
+import { PhotosState } from "@src/redux/state";
 
 const initialPhotosState: PhotosState = {
     profileName: "",
@@ -10,18 +10,17 @@ const initialPhotosState: PhotosState = {
 
 export const photosReducer: Reducer<PhotosState> = (state = initialPhotosState, action) => {
     switch (action.type) {
+        case ActionType.PHOTOS_FETCH_STARTED:
+            return {
+                ...state,
+                isFetching: true,
+            };
         case ActionType.PHOTOS_FETCHED:
             return {
                 profileName: action.payload.profileName,
                 photos: action.payload.photos,
                 isFetching: false,
             };
-        case ActionType.PHOTOS_FETCH_STARTED:
-            return {
-                ...state,
-                isFetching: true,
-            };
-
         default:
             return state;
     }
