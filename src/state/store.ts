@@ -2,14 +2,17 @@ import { createStore, applyMiddleware } from "redux";
 import reduxThunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { connectRouter, routerMiddleware } from "connected-react-router";
-import createHistory from "history/createBrowserHistory";
+import { createBrowserHistory } from "history";
 import { logger } from "redux-logger";
 
 import { rootReducer } from "@src/reducers";
 
-export const history = createHistory();
+// new root reducer with router state
+const createRootReducerWithRouterState = () => connectRouter(history)(rootReducer);
+
+export const history = createBrowserHistory();
 export const store = createStore(
-    connectRouter(history)(rootReducer), // new root reducer with router state
+    createRootReducerWithRouterState(),
     composeWithDevTools(
         applyMiddleware(
             routerMiddleware(history),
@@ -20,5 +23,5 @@ export const store = createStore(
 );
 
 if (module.hot) {
-    module.hot.accept("@src/reducers", () => store.replaceReducer(connectRouter(history)(rootReducer)));
+    module.hot.accept("@src/reducers", () => store.replaceReducer(createRootReducerWithRouterState()));
 }
