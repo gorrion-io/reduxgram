@@ -1,15 +1,16 @@
 import { Action as ReduxAction } from "redux";
-import { PhotosFetchedAction, PhotosFetchStatedAction } from "@src/features/photos/action-types";
+
+import { PhotosActions } from "@src/features/photos/redux/action-shapes";
+import { PrimitiveObject } from "@src/common/types/primitives";
 
 export type RootAction =
     | OtherActions
-    | PhotosFetchedAction
-    | PhotosFetchStatedAction
+    | PhotosActions
 ;
 
 export interface BasicAction extends ReduxAction {
     readonly type: string;
-    readonly payload?: any;
+    readonly payload?: PrimitiveObject;
     readonly error?: boolean;
 }
 

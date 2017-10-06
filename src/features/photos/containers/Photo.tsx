@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter, RouteComponentProps, match } from "react-router";
 
-import { PhotoData } from "@src/features/photos/photo-data.interface";
-import { fetchPhotos } from "@src/features/photos/action-creators";
-import { CommentsList } from "@src/features/comments/CommentsList.component";
-import { RootState } from "@src/redux/state";
+import { PhotoData } from "@src/features/photos/PhotoData";
+import { fetchPhotos } from "@src/features/photos/redux/action-creators";
+import { CommentsList } from "@src/features/comments/components";
+import { RootState } from "@src/redux/root-state";
 
 interface Props {
     match: match<{profileName: string}>;

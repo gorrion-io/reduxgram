@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import { MobileView, DesktopView } from "@src/common/helpers/components/media-queries";
-import { PhotoListContainer } from "@src/features/photos/PhotoList.container";
-import { PhotoContainer } from "@src/features/photos/Photo.container";
+import { PhotoContainer, PhotoListContainer } from "@src/features/photos/containers";
 import { ColumnContainer, LeftColumn, RightColumn } from "@src/common/helpers/components/layout";
-import { SearchProfileContainer } from "@src/features/home/search-profile";
+import { SearchProfileContainer } from "@src/features/home/SearchProfileContainer";
 
 export class App extends Component {
 

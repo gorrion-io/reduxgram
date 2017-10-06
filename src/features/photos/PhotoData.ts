@@ -1,4 +1,4 @@
-import { CommentData } from "@src/features/comments/comment-data.interface";
+import { CommentData } from "@src/features/comments/CommentData";
 
 export interface PhotoData {
     id: string;

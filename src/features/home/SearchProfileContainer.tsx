@@ -2,9 +2,9 @@ import React, { Component, StatelessComponent } from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm, InjectedFormProps, ConfigProps, FormErrors, WrappedFieldProps } from "redux-form";
 
-import { redirectToProfilePage } from "@src/redux/actions";
-import { fetchPhotos } from "@src/features/photos/action-creators";
-import { RootState } from "@src/redux/state";
+import { redirectToProfilePage } from "@src/common/actions";
+import { fetchPhotos } from "@src/features/photos/redux/action-creators";
+import { RootState } from "@src/redux/root-state";
 
 interface FormData {
     profileName: string;
@@ -14,10 +14,13 @@ interface InputFieldProps {
     // label: string;
     placeholder: string;
 }
-class SearchProfile extends Component<InjectedFormProps<FormData>> {
+interface SearchProfileProps {
+    isFetching: boolean;
+}
+class SearchProfile extends Component<SearchProfileProps & InjectedFormProps<FormData>> {
 
     render() {
-        const { handleSubmit } = this.props;
+        const { handleSubmit, isFetching } = this.props;
         const MyField = Field as new () => Field<InputFieldProps>;
 
         return (
@@ -30,6 +33,7 @@ class SearchProfile extends Component<InjectedFormProps<FormData>> {
                 />
                 <span className="input-group-btn">
                     <button
+                        disabled={isFetching}
                         className="btn btn-primary"
                         type="submit"
                     >
@@ -76,7 +80,7 @@ class SearchProfile extends Component<InjectedFormProps<FormData>> {
     )
 }
 
-const SearchProfileForm = reduxForm<FormData>({
+const SearchProfileForm = reduxForm<FormData, Partial<SearchProfileProps>>({
     form: "searchProfile",
     validate: values => {
         const errors: FormErrors<FormData> = {};
@@ -92,11 +96,12 @@ const SearchProfileForm = reduxForm<FormData>({
     },
 })(SearchProfile);
 
-function mapStateToProps(state: RootState): Partial<ConfigProps<FormData>> {
+function mapStateToProps(state: RootState): Partial<SearchProfileProps> & Partial<ConfigProps<FormData>> {
     return {
         initialValues: {
             profileName: state.photos.profileName || "",
         },
+        isFetching: state.photos.isFetching,
     };
 }
 

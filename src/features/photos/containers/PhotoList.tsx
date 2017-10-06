@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { match as matchType, withRouter } from "react-router";
 import { Link } from "react-router-dom";
-import { PhotoData } from "@src/features/photos/photo-data.interface";
-import { fetchPhotos } from "@src/features/photos/action-creators";
-import { RootState } from "@src/redux/state";
+
+import { PhotoData } from "@src/features/photos/PhotoData";
+import { fetchPhotos } from "@src/features/photos/redux/action-creators";
+import { RootState } from "@src/redux/root-state";
 
 interface Props {
     match: matchType<{profileName: string}>;
@@ -22,14 +23,6 @@ export class PhotoList extends Component<Props> {
 
     render() {
         const { photos, match } = this.props;
-        const photosElements = photos.map(photo => (
-            <Link
-                to={`${match.url}/${photo.id}`}
-                key={photo.id}
-            >
-                <img src={photo.images.thumbnail} />
-            </Link>
-        ));
 
         if (photos.length === 0) {
             return (
@@ -39,6 +32,15 @@ export class PhotoList extends Component<Props> {
                 </div>
             );
         } else {
+            const photosElements = photos.map(photo => (
+                <Link
+                    to={`${match.url}/${photo.id}`}
+                    key={photo.id}
+                >
+                    <img src={photo.images.thumbnail} />
+                </Link>
+            ));
+
             return (
                 <div>
                     {photosElements}

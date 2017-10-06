@@ -1,8 +1,8 @@
 import { RootObject as EndpointReponse } from "@src/common/endpoint.interface";
 import { createActionCreator } from "@src/redux/helpers";
-import { ActionType } from "@src/redux/types";
-import { PhotoData } from "@src/features/photos/photo-data.interface";
-import { CommentData } from "@src/features/comments/comment-data.interface";
+import { PhotoData } from "@src/features/photos/PhotoData";
+import { CommentData } from "@src/features/comments/CommentData";
+import { ActionType } from "@src/redux/action-types";
 
 export const fetchPhotos = createActionCreator((profileName: string) => async (dispatch, getState) => {
     const state = getState();
@@ -11,7 +11,7 @@ export const fetchPhotos = createActionCreator((profileName: string) => async (d
     }
 
     dispatch({
-        type: ActionType.PHOTOS_FETCH_STARTED,
+        type: ActionType.Photos.FETCH_STARTED,
     });
 
     let response: Response;
@@ -21,6 +21,7 @@ export const fetchPhotos = createActionCreator((profileName: string) => async (d
         console.error("Data fetching failed!", error);
         return;
     }
+
     const data = await response.json() as EndpointReponse;
     const photos = data.items.map<PhotoData>(item => ({
         id: item.code,
@@ -37,7 +38,7 @@ export const fetchPhotos = createActionCreator((profileName: string) => async (d
     }));
 
     dispatch({
-        type: ActionType.PHOTOS_FETCHED,
+        type: ActionType.Photos.FETCHED,
         payload: {
             profileName,
             photos,

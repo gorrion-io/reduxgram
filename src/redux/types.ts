@@ -1,4 +1,0 @@
-export enum ActionType {
-    PHOTOS_FETCHED = "PHOTOS/FETCHED",
-    PHOTOS_FETCH_STARTED = "PHOTOS/FETCH_STARTED",
-}
