@@ -5,7 +5,7 @@ import { MobileView, DesktopView } from "@src/common/helpers/components/media-qu
 import { PhotoListContainer } from "@src/features/photos/PhotoList.container";
 import { PhotoContainer } from "@src/features/photos/Photo.container";
 import { ColumnContainer, LeftColumn, RightColumn } from "@src/common/helpers/components/layout";
-import { SearchBarContainer } from "@src/features/home/search-bar";
+import { SearchProfileContainer } from "@src/features/home/search-profile";
 
 export class App extends Component {
 
@@ -28,7 +28,7 @@ export class App extends Component {
                         </RightColumn>
                     </ColumnContainer>
                 </DesktopView>
-                <Route exact path="/" component={SearchBarContainer} />
+                <Route exact path="/" component={SearchProfileContainer} />
             </div>
         );
     }
