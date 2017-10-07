@@ -5,6 +5,7 @@ import { Field, reduxForm, InjectedFormProps, ConfigProps, FormErrors, WrappedFi
 import { redirectToProfilePage } from "@src/common/actions";
 import { fetchPhotos } from "@src/features/photos/redux/action-creators";
 import { RootState } from "@src/redux/root-state";
+import { compose } from "redux";
 
 interface FormData {
     profileName: string;
@@ -80,22 +81,6 @@ class SearchProfile extends Component<SearchProfileProps & InjectedFormProps<For
     )
 }
 
-const SearchProfileForm = reduxForm<FormData, Partial<SearchProfileProps>>({
-    form: "searchProfile",
-    validate: values => {
-        const errors: FormErrors<FormData> = {};
-        if (values.profileName.length <= 3) {
-            errors.profileName = "To short profile name";
-        }
-        return errors;
-    },
-    onSubmit: async (values, dispatch) => {
-        const profileName = values.profileName!;
-        await dispatch(fetchPhotos(profileName));
-        dispatch(redirectToProfilePage(profileName));
-    },
-})(SearchProfile);
-
 function mapStateToProps(state: RootState): Partial<SearchProfileProps> & Partial<ConfigProps<FormData>> {
     return {
         initialValues: {
@@ -105,4 +90,21 @@ function mapStateToProps(state: RootState): Partial<SearchProfileProps> & Partia
     };
 }
 
-export const SearchProfileContainer = connect(mapStateToProps)(SearchProfileForm);
+export const SearchProfileContainer = compose(
+    reduxForm<FormData, Partial<SearchProfileProps>>({
+        form: "searchProfile",
+        validate: values => {
+            const errors: FormErrors<FormData> = {};
+            if (values.profileName.length <= 3) {
+                errors.profileName = "To short profile name";
+            }
+            return errors;
+        },
+        onSubmit: async (values, dispatch) => {
+            const profileName = values.profileName!;
+            await dispatch(fetchPhotos(profileName));
+            dispatch(redirectToProfilePage(profileName));
+        },
+    }),
+    connect(mapStateToProps),
+)(SearchProfile);
