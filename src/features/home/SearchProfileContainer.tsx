@@ -90,7 +90,7 @@ function mapStateToProps(state: RootState): Partial<SearchProfileProps> & Partia
     };
 }
 
-export const SearchProfileContainer = compose(
+export const SearchProfileContainer = connect(mapStateToProps)(compose(
     reduxForm<FormData, Partial<SearchProfileProps>>({
         form: "searchProfile",
         validate: values => {
@@ -106,5 +106,5 @@ export const SearchProfileContainer = compose(
             dispatch(redirectToProfilePage(profileName));
         },
     }),
-    connect(mapStateToProps),
-)(SearchProfile);
+    // withRouter, // if you need react-router
+)(SearchProfile));
