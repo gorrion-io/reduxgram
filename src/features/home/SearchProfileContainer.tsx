@@ -6,6 +6,7 @@ import { redirectToProfilePage } from "@src/common/actions";
 import { fetchPhotos } from "@src/features/photos/redux/action-creators";
 import { RootState } from "@src/redux/root-state";
 import { compose } from "redux";
+import { withRouter } from "react-router";
 
 interface FormData {
     profileName: string;
@@ -90,7 +91,9 @@ function mapStateToProps(state: RootState): Partial<SearchProfileProps> & Partia
     };
 }
 
-export const SearchProfileContainer = connect(mapStateToProps)(compose(
+export const SearchProfileContainer = compose(
+    withRouter,
+    connect(mapStateToProps),
     reduxForm<FormData, Partial<SearchProfileProps>>({
         form: "searchProfile",
         validate: values => {
@@ -106,5 +109,4 @@ export const SearchProfileContainer = connect(mapStateToProps)(compose(
             dispatch(redirectToProfilePage(profileName));
         },
     }),
-    // withRouter, // if you need react-router
-)(SearchProfile));
+)(SearchProfile);
