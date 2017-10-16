@@ -95,7 +95,7 @@ export const SearchProfileContainer = connect(mapStateToProps)(compose(
         form: "searchProfile",
         validate: values => {
             const errors: FormErrors<FormData> = {};
-            if (values.profileName.length <= 3) {
+            if (values.profileName && values.profileName.length <= 3) {
                 errors.profileName = "To short profile name";
             }
             return errors;
